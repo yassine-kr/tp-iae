@@ -133,4 +133,26 @@ public class HelloJPATest {
 
     }
 
+    @Test
+    public void test6(){
+        A a = new A("A1","A2");
+        C c1=new C("C1","C2");
+        C c2=new C("C1","C2");
+        C c3=new C("C1","C2");
+
+        a.getCs().add(c1);
+        a.getCs().add(c2);
+        a.getCs().add(c3);
+
+        tx.begin();
+        em.persist(a);
+        tx.commit();
+
+        Assert.assertEquals(4,a.getId().intValue());
+        Assert.assertEquals(5,c1.getId().intValue());
+        Assert.assertEquals(6,c2.getId().intValue());
+        Assert.assertEquals(7,c3.getId().intValue());
+
+    }
+
 }

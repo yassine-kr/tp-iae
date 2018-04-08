@@ -1,8 +1,8 @@
 package fr.elfoa.hello.jpa;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -19,6 +19,9 @@ public class A {
 
     private String a_2;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<C> cs;
+
     public A(){}
 
 
@@ -26,6 +29,7 @@ public class A {
     public A(String a_1, String a_2) {
         this.a_1 = a_1;
         this.a_2 = a_2;
+        cs=new ArrayList<>();
     }
 
 
@@ -64,6 +68,9 @@ public class A {
         this.a_2 = a_2;
     }
 
+    public List<C> getCs(){
+        return cs;
+    }
 
 
     @Override
