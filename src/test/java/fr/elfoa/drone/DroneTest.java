@@ -25,6 +25,16 @@ public class DroneTest {
 
     @Test
     public void flyTo() throws Exception {
+        Drone drone = new Drone(ORIGIN);
+
+        drone.tackOff();
+
+        Point destination=new Point(50.0,50.0,50.0);
+        drone.flyTo(destination);
+
+        assertEquals(50.0,drone.getCurrentPosition().getLatitude(),0.0);
+        assertEquals(50.0,drone.getCurrentPosition().getAltitude(),0.0);
+        assertEquals(50.0,drone.getCurrentPosition().getLongitude(),0.0);
 
     }
 
@@ -32,6 +42,15 @@ public class DroneTest {
 
     @Test
     public void landing() throws Exception {
+        Drone drone = new Drone(ORIGIN);
+
+        drone.tackOff();
+
+        drone.flyTo(new Point(50.0,50.0,50.0));
+
+        drone.landing();
+
+        assertEquals(0d,drone.getCurrentPosition().getAltitude(),0.0);
 
     }
 
@@ -39,14 +58,25 @@ public class DroneTest {
 
     @Test
     public void isCanFly() throws Exception {
+        Drone drone = new Drone(ORIGIN);
 
+        assertEquals(true,drone.isCanFly());
     }
 
 
 
     @Test
     public void getCurrentPosition() throws Exception {
+        Drone drone = new Drone(ORIGIN);
 
+        drone.tackOff();
+
+        Point destination=new Point(50.0,50.0,50.0);
+        drone.flyTo(destination);
+
+        assertEquals(50.0,drone.getCurrentPosition().getLatitude(),0.0);
+        assertEquals(50.0,drone.getCurrentPosition().getAltitude(),0.0);
+        assertEquals(50.0,drone.getCurrentPosition().getLongitude(),0.0);
     }
 
 }

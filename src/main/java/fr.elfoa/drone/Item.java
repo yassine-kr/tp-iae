@@ -5,9 +5,9 @@ package fr.elfoa.drone;
  */
 public class Item {
 
-    private Integer size;
+    private Integer size=0;
 
-    private Integer weight;
+    private Integer weight=0;
 
 
 

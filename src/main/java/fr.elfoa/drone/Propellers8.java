@@ -2,14 +2,12 @@ package fr.elfoa.drone;
 
 import javax.inject.Inject;
 
-/**
- * @author Pierre Colomb
- */
-public class Propellers {
+@Eight
+public class Propellers8 implements IPropellers {
 
-    private Integer number = 4;
+    private Integer number = 8;
 
-    private Battery battery;
+    private IBattery battery;
 
     @Inject
     private ConsumptionCalculator calculator;
@@ -17,11 +15,11 @@ public class Propellers {
     private Boolean isRunning = false;
 
     @Inject
-    public Propellers(Battery battery){
+    public Propellers8(@Ion IBattery battery){
         this.battery = battery;
     }
 
-    public Battery getBattery() {
+    public IBattery getBattery() {
         return battery;
     }
 

@@ -1,5 +1,6 @@
 package fr.elfoa.drone;
 
+import javax.enterprise.context.RequestScoped;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * @author Pierre Colomb
  */
+@RequestScoped
 public class Battery {
 
     private List<Module> modules = new ArrayList<>();

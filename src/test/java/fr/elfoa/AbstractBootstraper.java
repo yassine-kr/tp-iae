@@ -1,12 +1,19 @@
 package fr.elfoa;
 
+import fr.elfoa.drone.Container;
+import fr.elfoa.drone.Drone;
+import fr.elfoa.drone.Item;
 import org.jboss.weld.context.bound.BoundConversationContext;
 import org.jboss.weld.context.bound.BoundRequestContext;
 import org.jboss.weld.context.bound.MutableBoundRequest;
 import org.jboss.weld.environment.se.Weld;
 import org.jboss.weld.environment.se.WeldContainer;
+import org.junit.Test;
 
 import java.util.HashMap;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * @author Pierre Colomb
