@@ -1,23 +1,39 @@
 package fr.elfoa.drone;
 
 import static org.junit.Assert.assertEquals;
+
+import fr.elfoa.AbstractBootstraper;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
  * @author Pierre Colomb
  */
-public class DroneTest {
+public class DroneTest extends AbstractBootstraper {
+
+    @BeforeClass
+    public static void start(){
+        init();
+    }
+
+    @AfterClass
+    public static void stop(){
+        shutdown();
+    }
 
     private static final Point ORIGIN = new Point(0d,0d,0d);
 
     @Test
     public void tackOff() throws Exception {
 
-        Drone drone = new Drone(ORIGIN);
+        startRequest();
+        Drone drone = getInstance(Drone.class);
 
         drone.tackOff();
 
         assertEquals(50d,drone.getCurrentPosition().getAltitude(),0);
+        stopRequest();
 
     }
 
@@ -25,7 +41,8 @@ public class DroneTest {
 
     @Test
     public void flyTo() throws Exception {
-        Drone drone = new Drone(ORIGIN);
+        startRequest();
+        Drone drone = getInstance(Drone.class);
 
         drone.tackOff();
 
@@ -35,6 +52,7 @@ public class DroneTest {
         assertEquals(50.0,drone.getCurrentPosition().getLatitude(),0.0);
         assertEquals(50.0,drone.getCurrentPosition().getAltitude(),0.0);
         assertEquals(50.0,drone.getCurrentPosition().getLongitude(),0.0);
+        stopRequest();
 
     }
 
@@ -42,7 +60,9 @@ public class DroneTest {
 
     @Test
     public void landing() throws Exception {
-        Drone drone = new Drone(ORIGIN);
+
+        startRequest();
+        Drone drone = getInstance(Drone.class);
 
         drone.tackOff();
 
@@ -51,23 +71,26 @@ public class DroneTest {
         drone.landing();
 
         assertEquals(0d,drone.getCurrentPosition().getAltitude(),0.0);
-
+        stopRequest();
     }
 
 
 
     @Test
     public void isCanFly() throws Exception {
-        Drone drone = new Drone(ORIGIN);
+        startRequest();
+        Drone drone = getInstance(Drone.class);
 
         assertEquals(true,drone.isCanFly());
+        stopRequest();
     }
 
 
 
     @Test
     public void getCurrentPosition() throws Exception {
-        Drone drone = new Drone(ORIGIN);
+        startRequest();
+        Drone drone = getInstance(Drone.class);
 
         drone.tackOff();
 
@@ -77,6 +100,7 @@ public class DroneTest {
         assertEquals(50.0,drone.getCurrentPosition().getLatitude(),0.0);
         assertEquals(50.0,drone.getCurrentPosition().getAltitude(),0.0);
         assertEquals(50.0,drone.getCurrentPosition().getLongitude(),0.0);
+        stopRequest();
     }
 
 }

@@ -18,9 +18,6 @@ import javax.persistence.Persistence;
 import java.util.Date;
 
 
-/**
- * @author Pierre Colomb
- */
 public class CrmJPATest {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("crm-database");

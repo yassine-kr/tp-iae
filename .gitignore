@@ -24,3 +24,5 @@ hs_err_pid*
 target/
 .idea/
 iae.iml
+create.ddl
+drop.ddl
